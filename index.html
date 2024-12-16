@@ -57,6 +57,7 @@
   <header>
     <h1>Tamjid Khan</h1>
     <p>UCLA Computer Engineering BS Graduate</p>
+    <p>Current UCI Masters Student in Embedded and Cyber-Physical Systems</p>
   </header>
   <main>
     <h2>Contact Information </h2>
@@ -257,6 +258,46 @@
       shows how users can view and search for cards similarly to the full card list, and add cards to the deck. A maximum of 3 cards can be
       in the deck at a time. Similarly, users can click on the cards in their deck to remove themm from the deck. When users create a valid
       deck, they can save their deck, which will add it to the database and can only be accessed by that user from the load menu.
+    </p>
+    <h1 style = "text-align:center;background-color:#333;color: white;">Light Swarm Project</h1>
+    <p> 
+      This Light Swarm Project involves using a wireless communication protocol (UDP) to connect 3 ESP Devices and a Raspberry Pi 5. The
+      ESPs will read a light value from its analog pin and compare it to the others. The ESP with the highest light value will be designated
+      as Master. The Master ESP device is the only one that will communicate with the Raspberry Pi, which can store and process that information.
+    </p>
+    <h2 class="center" style="text-align: center;"> Raspberry Pi Wiring Schematic</h2>
+    <img src="RPISchematic.png" class="center">
+    <p>
+      The image above shows the wiringg schematic of the Raspberry Pi 5. There are 4 LEDs connected, a button, as well as Voltage and Ground pins.
+      All resistors used here are 330 Ohms to prevent the LEDs from receiving too much current. The White LED turns on for 3 seconds when the button is pressed, 
+      in which case the Pi will display graphs and create a log file. The other 3 LEDs correspond to the 3 ESPs. The higher the reading it gets, the faster the 
+      matching LED will flash.
+    </p>
+    <h2 class="center" style="text-align: center;"> ESP8266 Wiring Schematic</h2>
+    <img src="ESPSchematic.png" class="center">
+    <p>
+      The image above shows the wiringg schematic of the three ESPs. The diagram is very simple, requiring only the analog A0 pin to read from a photoresisitor.
+      The resistor used here is 220 Ohm, and Voltage and Ground pins are needed as usual.
+    </p>
+    <h2 class="center" style="text-align: center;"> ESP8266 Setup</h2>
+    <img src="ESPSetup.png" class="center">
+    <p>
+      Here is an image of what the setup looks like when all three ESP8266s are connected. All of the ESP devices have one on-board LED on to indicate that it is running. However,
+      one of the ESPs (the one on the top left) has a second LED on which indicates that it is the Master.
+    </p>
+    <h2 class="center" style="text-align: center;"> Raspberry Pi Graphs</h2>
+    <img src="PiGraphScreenshot.png" class="center">
+    <p>
+      As the Raspberry Pi program runs, it acccumulates the data from the Master ESP and stores it in a list of 30 most recent entries. The ESP sends data every second, so this means
+      that the last 30 seconds of data are stored. Using this data, a bar graph and a line graph are created on the button press. The Bar chart shows how many of the 30 seconds each ESP was
+      Master for. The Line graph shows three Lines of the light values over the past 30 seconds for each ESP. The ESP with the highest value is highlighted by a red line to show it is 
+      Master.
+    </p>
+    <h2 class="center" style="text-align: center;"> Log Example Screenshot</h2>
+    <img src="LogScreenshot.png" class="center">
+    <p>
+      Finally, here is an example of what the log file looks like. It is a simple text file that stores the data and time of when the button was pressed. It also displays, which ESPs became
+      Master in the last 30 seconds, and for how long. Finally, it shows the log of the last 30 seconds of data.
     </p>
   </main>
 </body>
